@@ -33,9 +33,9 @@ def main():
     print(df.isnull().sum())
     print("\n")
     
-    # Tratando valores faltantes da coluna Density
-    print("VALORES FALTANTES DA COLUNA Density\n")
-    print('Total valores ausentes: ' + str(df['Density'].isnull().sum()))
+    # Tratando valores faltantes da coluna Symptoms
+    print("VALORES FALTANTES DA COLUNA Symptoms\n")
+    print('Total valores ausentes: ' + str(df['Symptoms'].isnull().sum()))
 
     
     columns_missing_value = df.columns[df.isnull().any()]
@@ -45,7 +45,7 @@ def main():
     for c in columns_missing_value:
         UptateMissingvalue(df, c)
     
-    print('Total valores ausentes: ' + str(df['Density'].isnull().sum()))
+    print('Total valores ausentes: ' + str(df['Symptoms'].isnull().sum()))
     print(df.describe())
     print("\n")
     print(df.head(15))
@@ -62,7 +62,7 @@ def UptateMissingvalue(df, column, method="mode", number=0):
         df[column].fillna(number, inplace=True)
     elif method == 'median':
         # Substituindo valores ausentes pela mediana 
-        median = df['Density'].median()
+        median = df['Symptoms'].median()
         df[column].fillna(median, inplace=True)
     elif method == 'mean':
         # Substituindo valores ausentes pela média
