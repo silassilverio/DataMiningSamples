@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 def main():
@@ -48,10 +49,17 @@ def main():
     plt.hist(df['Age at diagnosis'], 5, rwidth=0.9, edgecolor='black')
     plt.show()
 
-    plt.title('Idade do grupo', fontsize=20)
-    plt.ylabel('Idade', fontsize=15)
-    plt.xlabel('Quantidade de pessoas', fontsize=15)
-    plt.plot(df['Age at diagnosis'])
+    sns.kdeplot(df['Age at diagnosis'].dropna())
+    plt.show()
+
+    sns.distplot(df['Age at diagnosis'].dropna())
+    plt.show()
+
+    sns.countplot(df['Gender'])
+    plt.show()
+
+    df['Gender'].value_counts().plot(kind='pie', autopct='%.2f%%')
+    plt.axis('equal')
     plt.show()
 
 
