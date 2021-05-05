@@ -58,8 +58,13 @@ def main():
     sns.countplot(df['Gender'])
     plt.show()
 
+    plt.title('Genero do grupo', fontsize=20)
+    plt.ylabel('Genero', fontsize=15)
     df['Gender'].value_counts().plot(kind='pie', autopct='%.2f%%')
     plt.axis('equal')
+    plt.show()
+
+    plt.hist(df['Class'])
     plt.show()
 
 
