@@ -100,9 +100,9 @@ def main():
 
     # Get test confusion matrix
     cm = confusion_matrix(y_test, y_hat_test)
-    plot_confusion_matrix(cm, ['Vive', 'Morre'], False,
+    plot_confusion_matrix(cm, ['Morre', 'Vive'], False,
                           "Confusion Matrix - SVM sklearn")
-    plot_confusion_matrix(cm, ['Vive', 'Morre'], True,
+    plot_confusion_matrix(cm, ['Morre', 'Vive'], True,
                           "Confusion Matrix - SVM sklearn normalized")
     plt.show()
 
