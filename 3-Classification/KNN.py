@@ -100,7 +100,8 @@ def main():
     names = ['Gender', 'Symptoms', 'Alcohol', 'Hepatitis B Surface Antigen', 'Hepatitis B e Antigen', 'Hepatitis B Core Antibody', 'Hepatitis C Virus Antibody', 'Cirrhosis', 'Endemic Countries', 'Smoking', 'Diabetes', 'Obesity', 'Hemochromatosis', 'Arterial Hypertension', 'Chronic Renal Insufficiency', 'Human Immunodeficiency Virus', 'Nonalcoholic Steatohepatitis', 'Esophageal Varices', 'Splenomegaly', 'Portal Hypertension', 'Portal Vein Thrombosis', 'Liver Metastasis', 'Radiological Hallmark', 'Age at diagnosis', 'Grams of Alcohol per day', 'Packs of cigarets per year',
              'Performance Status', 'Encefalopathy degree', 'Ascites degree', 'International Normalised Ratio', 'Alpha-Fetoprotein (ng/mL)', 'Haemoglobin (g/dL)', 'Mean Corpuscular Volume (fl)', 'Leukocytes(G/L)', 'Platelets (G/L)', 'Albumin (mg/dL)', 'Total Bilirubin(mg/dL)', 'Alanine transaminase (U/L)', 'Aspartate transaminase (U/L)', 'Gamma glutamyl transferase (U/L)', 'Alkaline phosphatase (U/L)', 'Total Proteins (g/dL)', 'Creatinine (mg/dL)', 'Number of Nodules', 'Major dimension of nodule (cm)', 'Direct Bilirubin (mg/dL)', 'Iron (mcg/dL)', 'Oxygen Saturation (%)', 'Ferritin (ng/mL)', 'Class']  # Nome das colunas
     # Define as colunas que serão  utilizadas
-    features = ['Grams of Alcohol per day', 'Class']
+    features = ['Gender', 'Diabetes', 'Arterial Hypertension', 'Obesity', 'Alcohol',
+                'Grams of Alcohol per day', 'Smoking', 'Packs of cigarets per year', 'Age at diagnosis', 'Class']
     input_file = '0-Datasets/hcc-dataClear.txt'
     df = pd.read_csv(input_file,    # Nome do arquivo com dados
                      usecols=features,
@@ -140,9 +141,9 @@ def main():
 
     # Get test confusion matrix
     cm = confusion_matrix(y_test, y_hat_test)
-    plot_confusion_matrix(cm, ['Vive', 'Morre'], False,
+    plot_confusion_matrix(cm, ['Morre', 'Vive'], False,
                           "Confusion Matrix - K-NN")
-    plot_confusion_matrix(cm, ['Vive', 'Morre'], True,
+    plot_confusion_matrix(cm, ['Morre', 'vive'], True,
                           "Confusion Matrix - K-NN normalized")
 
     # STEP 2 - TESTS USING knn classifier from sk-learn

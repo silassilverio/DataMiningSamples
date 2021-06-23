@@ -48,30 +48,13 @@ def plot_confusion_matrix(cm, classes,
     plt.xlabel('Predicted label')
 
 
-def load_dataset(dataset='cancer'):
-    if dataset == 'iris':
-        # Load iris data and store in dataframe
-        iris = datasets.load_iris()
-        names = iris.target_names
-        df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
-        df['target'] = iris.target
-    elif dataset == 'cancer':
-        # Load cancer data and store in dataframe
-        cancer = datasets.load_breast_cancer()
-        names = cancer.target_names
-        df = pd.DataFrame(data=cancer.data, columns=cancer.feature_names)
-        df['target'] = cancer.target
-
-    print(df.head())
-    return names, df
-
-
 def main():
     # load dataset
     names = ['Gender', 'Symptoms', 'Alcohol', 'Hepatitis B Surface Antigen', 'Hepatitis B e Antigen', 'Hepatitis B Core Antibody', 'Hepatitis C Virus Antibody', 'Cirrhosis', 'Endemic Countries', 'Smoking', 'Diabetes', 'Obesity', 'Hemochromatosis', 'Arterial Hypertension', 'Chronic Renal Insufficiency', 'Human Immunodeficiency Virus', 'Nonalcoholic Steatohepatitis', 'Esophageal Varices', 'Splenomegaly', 'Portal Hypertension', 'Portal Vein Thrombosis', 'Liver Metastasis', 'Radiological Hallmark', 'Age at diagnosis', 'Grams of Alcohol per day', 'Packs of cigarets per year',
              'Performance Status', 'Encefalopathy degree', 'Ascites degree', 'International Normalised Ratio', 'Alpha-Fetoprotein (ng/mL)', 'Haemoglobin (g/dL)', 'Mean Corpuscular Volume (fl)', 'Leukocytes(G/L)', 'Platelets (G/L)', 'Albumin (mg/dL)', 'Total Bilirubin(mg/dL)', 'Alanine transaminase (U/L)', 'Aspartate transaminase (U/L)', 'Gamma glutamyl transferase (U/L)', 'Alkaline phosphatase (U/L)', 'Total Proteins (g/dL)', 'Creatinine (mg/dL)', 'Number of Nodules', 'Major dimension of nodule (cm)', 'Direct Bilirubin (mg/dL)', 'Iron (mcg/dL)', 'Oxygen Saturation (%)', 'Ferritin (ng/mL)', 'Class']  # Nome das colunas
     # Define as colunas que serão  utilizadas
-    features = ['Alcohol', 'Class']
+    features = ['Gender', 'Diabetes', 'Arterial Hypertension', 'Obesity', 'Alcohol',
+                'Grams of Alcohol per day', 'Smoking', 'Packs of cigarets per year', 'Age at diagnosis', 'Class']
     input_file = '0-Datasets/hcc-dataClear.txt'
     df = pd.read_csv(input_file,    # Nome do arquivo com dados
                      usecols=features,
@@ -86,7 +69,7 @@ def main():
 
     # Split the data - 70% train, 30% test
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.30, random_state=1)
+        X, y, test_size=0.3, random_state=1)
     print("Total train samples: {}".format(X_train.shape[0]))
     print("Total test  samples: {}".format(X_test.shape[0]))
 
